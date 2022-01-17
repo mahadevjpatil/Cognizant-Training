@@ -1,0 +1,220 @@
+1.hello world program in pl/sql
+->
+BEGIN 
+dbms_output.out_line('HELLO WORLD');
+END;
+/
+
+2.PL/SQL Program to add two numbers
+->
+DECLARE
+A number(5);
+B number(5);
+C number(6);
+
+BEGIN
+ A:=20;
+ B:=30;
+
+ C:=A+B;
+
+dbms_output.put_line('addition is c'|| C);
+
+END;
+/
+
+3.PL/SQL Program for prime number.
+->
+DECLARE
+n number(5);			
+i number(5);		
+temp number(6);	
+
+BEGIN
+n := 13;				
+i := 2;
+temp := 1;
+for i in 2..n/2
+	loop
+	  if mod(n, i) = 0
+		then
+			temp := 0;
+			exit;
+		end if;
+	end loop;
+
+	if temp = 1
+	then
+		dbms_output.put_line('true');
+	else
+		dbms_output.put_line('false');
+	end if;
+END;
+
+4.PL/SQL program to find factorial of a number.
+->
+DECLARE
+fac number :=1;
+n number := &1;
+BEGIN		
+	while n > 0 loop
+	fac:=n*fac;		
+	n:=n-1;		
+end loop;
+
+dbms_output.put_line(fac);
+
+END;			
+
+5.PL/SQL program to print table of a number.
+->
+DECLARE
+n number;
+i number;
+ BEGIN
+	n:=&n;
+	for i in 1..10
+	loop
+	dbms_output.put_line(n||' x '||i||' = '||n*i);
+end loop;
+END;
+
+6.PL/SQL program for reverse a number.
+->
+DECLARE
+num NUMBER;
+rev NUMBER;
+  
+BEGIN
+num:=#
+rev:=0;
+WHILE num>0 LOOP
+rev:=(rev*10) + mod(num,10);
+num:=floor(num/10);
+END LOOP;
+DBMS_OUTPUT.PUT_LINE('Reverse of the number is: ' || rev);
+END;
+
+7.PL/SQL Program for fibonaccai series.
+->
+DECLARE
+first number := 0;
+second number := 1;
+temp number;
+n number := 5;
+i number;
+
+BEGIN
+	dbms_output.put_line('Series:');
+	dbms_output.put_line(first);
+	dbms_output.put_line(second);
+
+for i in 2..n
+	loop
+		temp:=first+second;
+
+first := second;
+second := temp;
+	dbms_output.put_line(temp);
+end loop;
+
+END;
+
+8.PL/SQL Program to check number is odd or even.
+->
+DECLARE
+n number:=&n;
+
+BEGIN
+if mod(n,2)=0
+then
+dbms_output.put_line('number is even');
+else
+dbms_output.put_line('number is odd');
+end if;
+END;
+
+
+9.PL/SQL program for reverse of a number.
+->
+DECLARE
+	str VARCHAR(20) := 'skeegrofskeeg';
+	len NUMBER;
+	str1 VARCHAR(20);
+BEGIN
+	len := Length(str);
+	FOR i IN REVERSE 1.. len LOOP		
+		str1 := str1
+				|| Substr(str, i, 1);
+	END LOOP;
+
+	dbms_output.Put_line('Reverse of string'|| str1);
+END;
+
+10.PL/SQL program for palindrome Number.
+->
+DECLARE
+	n number;
+	m number;
+	temp number:=0;
+	rem number;
+
+BEGIN
+	n:=5432112345;
+	m:=n;
+	
+	While n>0
+	loop
+		rem:=mod(n,10);
+		temp:=(temp*10)+rem;
+		n:=trunc(n/10);
+	end loop; 
+	
+	if m = temp
+	then
+		dbms_output.put_line('true');
+	else
+		dbms_output.put_line('false');
+	end if;
+END;
+
+11.PL/SQL Program to swap two numbers.
+->
+DECLARE 
+A number(3);
+B number(3);
+C number(4);
+
+BEGIN
+ A :=10;
+ B :=20;
+ C :=A;
+ A :=B;
+ B :=C;
+dbms_output.put_line(A);
+dbms_output.put_line(B);
+END;
+
+12. PL/SQL program for amstrong number.
+->
+DECLARE
+  n number(3);
+  s number(3):=0;
+  t number(3);
+BEGIN
+  n:=&n;
+  t:=n;
+      while t>0 loop
+        s:=s+power((t mod 10),3);
+        t:=trunc(t/10);
+      end loop;
+ 
+      if(s=n) then
+        dbms_output.put_line('The Given Number ' || n || ' is an Armstrong Number');
+      else
+        dbms_output.put_line('The Given Number ' || n || ' is Not an Armstrong Number');
+      end if;
+END;
+
+
+
